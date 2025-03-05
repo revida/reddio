@@ -24,18 +24,6 @@ const {
 	bridgeTask, 
 	performCheckin 
 } = require('./service');
-async function runTransaction() {
-    header();
-    for (const [index, privateKey] of PRIVATE_KEYS.entries()) {
-        try {
-            await dailyTransaction(privateKey);
-            await bridgeTransaction(privateKey);
-            console.log('');
-        } catch (error) {
-            console.error(kleur.red(`[${timelog()}] Error processing wallet ${index + 1}: ${error.message}`));
-        }
-    }
-}
 async function runDaily() {
     header();
 	await runTransaction();
