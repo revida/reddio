@@ -26,8 +26,6 @@ const {
 } = require('./service');
 async function runDaily() {
     header();
-	await runTransaction();
-	await delay(180000);
     for (const [index, privateKey] of PRIVATE_KEYS.entries()) {
         try {
           await performCheckin(privateKey);
